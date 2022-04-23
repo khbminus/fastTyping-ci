@@ -21,7 +21,7 @@ jobs:
         with:
           file: ./${{ matrix.name }}.Dockerfile
           push: true
-          tags: ghcr.io/khbminus/fastTyping-ci:${{ matrix.name }} 
+          tags: ghcr.io/khbminus/fasttyping-ci:${{ matrix.name }} 
     strategy:
         matrix:
           name:
