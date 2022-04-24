@@ -6,14 +6,13 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends software-properties-common \
-    curl wget cmake make pkg-config locales git gcc-10 g++-10 \
-    openssl libssl-dev libjsoncpp-dev uuid-dev zlib1g-dev libc-ares-dev\
+    curl wget cmake make pkg-config locales git \
     postgresql-server-dev-all \ 
     libboost-all-dev python3-pip \
     && rm -rf /var/lib/apt/lists/* \
     && locale-gen en_US.UTF-8
 
-RUN apt update && apt install -y \
+RUN apt update -yqq && apt install -yqq \
         clang-12 \
         make \
         cmake \
@@ -41,5 +40,7 @@ RUN git clone https://github.com/nlohmann/json $NLOHMANN_ROOT
 WORKDIR $NLOHMANN_ROOT
 RUN cmake . -DJSON_BuildTests=OFF && make install
 RUN rm -rf $NLOHMANN_ROOT
+
+WORKDIR /root
 
 CMD ["/bin/bash"]
