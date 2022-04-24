@@ -30,8 +30,8 @@ ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
     CC=clang-12 \
     CXX=clang++-12 \
-    AR=gcc-ar-10 \
-    RANLIB=gcc-ranlib-10 \
+    AR=llvm-ar \
+    RANLIB=llvm-ranlib \
     IROOT=/install
 
 # Nlohmann (TODO: use a package)
